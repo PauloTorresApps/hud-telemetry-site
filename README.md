@@ -56,7 +56,7 @@ sudo snap install --dangerous --devmode ./hud-telemetry_<versao>_amd64.snap
 Instale o [FFmpeg](https://ffmpeg.org/download.html) (no macOS: `brew install ffmpeg`;
 no Windows, adicione-o ao PATH).
 
-- **Windows:** execute `hud-telemetry-amd64-installer.exe`. Se o SmartScreen
+- **Windows:** execute o instalador (`hud-telemetry-…-installer.exe`). Se o SmartScreen
   avisar que o app não é reconhecido, clique em **Mais informações → Executar
   assim mesmo**.
 - **macOS** (Intel e Apple Silicon): descompacte
@@ -124,7 +124,7 @@ sudo snap install --dangerous --devmode ./hud-telemetry_<version>_amd64.snap
 Install [FFmpeg](https://ffmpeg.org/download.html) (macOS: `brew install ffmpeg`;
 Windows: add it to PATH).
 
-- **Windows:** run `hud-telemetry-amd64-installer.exe`. If SmartScreen says the
+- **Windows:** run the installer (`hud-telemetry-…-installer.exe`). If SmartScreen says the
   app isn't recognized, click **More info → Run anyway**.
 - **macOS** (Intel and Apple Silicon): unzip
   `hud-telemetry-<version>-macos-universal.zip` and drag `hud-telemetry.app`
