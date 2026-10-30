@@ -95,15 +95,16 @@
       <div class="wrap story__grid">
         <div>
           <p class="kicker" data-i18n="story.kicker">01 — A dor</p>
-          <h2 data-i18n="story.title">A GoPro grava tudo. Menos o que importa.</h2>
+          <h2 data-i18n="story.title">O GPS da câmera falhou. <em>Os dados, não.</em></h2>
         </div>
         <div class="story__body">
-          <p data-i18n="story.p1">Você volta do pedal com horas de vídeo lindo: a descida, a curva fechada, o pôr do sol no alto da serra. Mas, quando assiste, falta alguma coisa. O vídeo não diz a que velocidade você estava, quanto subiu nem em que ponto do trajeto aquilo aconteceu.</p>
-          <p data-i18n="story.p2">Os números estão lá — no Strava, no GPS, às vezes gravados dentro do próprio arquivo da câmera. Só que ficam separados do vídeo. Juntar os dois na mão, num editor, leva horas, e as ferramentas que faziam isso foram descontinuadas, são pagas ou não rodam no Linux.</p>
+          <p data-i18n="story.p1">Eu filmo meus pedais com uma GoPro HERO7 Black. A imagem é excelente, e a câmera tem GPS próprio para gravar a telemetria. O problema é que esse GPS falha com frequência.</p>
+          <p data-i18n="story.p2">Às vezes a gravação rápida (QuikCapture) começa antes de a câmera achar sinal. Às vezes o sinal é bloqueado por prédios, árvores ou céu muito nublado. Até a posição da câmera atrapalha: presa no peito, ela fica de cabeça para baixo, e muitas vezes isso basta para perder a conexão.</p>
+          <p data-i18n="story.p3">A frustração vinha depois. Eu chegava em casa doido para ver o vídeo com a velocidade na tela, abria o GoPro Quik para adicionar os adesivos de telemetria, e o app não encontrava os dados de GPS. Os adesivos ficavam marcados como “GPS Only”, inutilizáveis.</p>
+          <p data-i18n="story.p4">Mas os dados existiam. Estavam no Strava e no meu Garmin, que tinham registrado o pedal inteiro. Faltava só uma ferramenta que levasse esses dados para o vídeo. Foi assim que nasceu o Strava Overlay: a telemetria vem do Strava, ou de um arquivo GPX exportado do Garmin para quem não usa o Strava.</p>
 
-          <!-- TODO(autor): substituir este bloco pelo relato pessoal de Paulo Roberto Torres -->
           <blockquote class="quote">
-            <p data-i18n="story.quote">“Eu tinha o vídeo e tinha os dados. Faltava uma ferramenta que juntasse os dois. Então eu escrevi uma.”</p>
+            <p data-i18n="story.quote">“Eu chegava em casa doido para ver a velocidade no vídeo, e o app dizia que não tinha GPS. Os dados estavam no meu Garmin. Só faltava juntar os dois.”</p>
             <footer>— Paulo Roberto Torres, <span data-i18n="story.role">criador do Strava Overlay</span></footer>
           </blockquote>
         </div>
@@ -113,17 +114,17 @@
         <div class="compare__col compare__col--before">
           <p class="kicker" data-i18n="story.before">Antes</p>
           <ul>
-            <li data-i18n="story.b1">Vídeo bonito, mas sem contexto</li>
-            <li data-i18n="story.b2">Dados presos no app de treino</li>
-            <li data-i18n="story.b3">Horas alinhando gráficos no editor</li>
+            <li data-i18n="story.b1">GPS da câmera sem sinal ou instável</li>
+            <li data-i18n="story.b2">Quik sem adesivos de telemetria (“GPS Only”)</li>
+            <li data-i18n="story.b3">Vídeo sem velocidade, altitude nem trajeto</li>
           </ul>
         </div>
         <div class="compare__arrow" aria-hidden="true">→</div>
         <div class="compare__col compare__col--after">
           <p class="kicker" data-i18n="story.after">Com o Strava Overlay</p>
           <ul>
-            <li data-i18n="story.a1">Velocidade, altitude e trajeto na tela</li>
-            <li data-i18n="story.a2">Sincronização com um clique no mapa</li>
+            <li data-i18n="story.a1">Telemetria do Strava ou do GPX do Garmin</li>
+            <li data-i18n="story.a2">Overlay mesmo quando o GPS da câmera falhou</li>
             <li data-i18n="story.a3">Vídeo final pronto para publicar</li>
           </ul>
         </div>

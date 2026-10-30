@@ -122,6 +122,7 @@ h1 {
   text-transform: uppercase; letter-spacing: -.01em;
 }
 h1 em { font-style: italic; color: var(--orange); display: block; }
+h2 em { font-style: italic; color: var(--orange); }
 
 .lead { margin-top: 24px; font-size: 19px; color: var(--muted); max-width: 34em; }
 .hero__cta { display: flex; flex-wrap: wrap; gap: 14px; margin-top: 34px; }
