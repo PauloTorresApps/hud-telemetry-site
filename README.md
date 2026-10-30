@@ -1,6 +1,6 @@
 # HUD Telemetry
 
-🌐 **Site:** https://paulotorresapps.github.io/strava-overlay-site/
+🌐 **Site:** https://paulotorresapps.github.io/hud-telemetry-site/
 
 [Português](#português) · [English](#english)
 
@@ -15,7 +15,7 @@ da telemetria gravada pela GoPro.
 ### Download
 
 Baixe o instalador do seu sistema na página de
-[Releases](https://github.com/PauloTorresApps/strava-overlay-site/releases/latest).
+[Releases](https://github.com/PauloTorresApps/hud-telemetry-site/releases/latest).
 
 ### Instalação no Linux
 
@@ -78,7 +78,7 @@ video, in sync with GPS data from Strava, a GPX file or GoPro telemetry.
 ### Download
 
 Get the installer for your system from
-[Releases](https://github.com/PauloTorresApps/strava-overlay-site/releases/latest).
+[Releases](https://github.com/PauloTorresApps/hud-telemetry-site/releases/latest).
 
 ### Linux
 
