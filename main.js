@@ -10,7 +10,7 @@
     "nav.audience": "Who it's for",
     "nav.download": "Download",
 
-    "hero.eyebrow": "Open source · Desktop · v1.0.1",
+    "hero.eyebrow": "Free · Desktop · v1.0.1",
     "hero.title": "Your video shows the scenery. <em>Now it shows the effort.</em>",
     "hero.lead": "Strava Overlay takes the GPS data from your activity — from Strava, a GPX file or the GoPro itself — and draws speed, altitude, grade and route on top of your video, frame by frame, in sync with what the camera recorded.",
     "hero.cta": "Download for free",
@@ -76,14 +76,14 @@
     "aud.3t": "Content creators",
     "aud.3": "Videos with data hold attention longer on YouTube and Instagram. Generate the overlay without a professional editor.",
 
-    "ft.1t": "Free and open source",
-    "ft.1": "The code is open. You can audit it, improve it and contribute.",
+    "ft.1t": "Free",
+    "ft.1": "No subscription or paid plan: download the installer and use it.",
     "ft.2t": "Your data stays with you",
     "ft.2": "The video is processed on your computer. Credentials are saved only on your machine.",
     "ft.3t": "Hardware acceleration",
     "ft.3": "NVENC, Quick Sync, AMF and VideoToolbox, with fast, balanced and quality profiles.",
-    "ft.4t": "Bilingual",
-    "ft.4": "The interface and the overlay labels are available in Portuguese and English.",
+    "ft.4t": "Multilingual",
+    "ft.4": "Interface in Portuguese, English, Spanish, French, German and Chinese. Overlay labels in Portuguese or English.",
 
     "dl.kicker": "05 — Download",
     "dl.title": "Ready to put data on your next video?",
@@ -93,7 +93,7 @@
     "dl.r2": "To use Strava: a <b>Client ID and Client Secret</b>, created for free at strava.com/settings/api. The app asks for them the first time it opens.",
     "dl.guide": "Full installation guide →",
 
-    "foot.by": "Created by Paulo Roberto Torres · AGPL-3.0 License",
+    "foot.by": "Created by Paulo Roberto Torres",
     "foot.note": "Independent project, not affiliated with Strava, Inc. or GoPro, Inc."
   };
 
