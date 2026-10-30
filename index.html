@@ -1,0 +1,340 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Strava Overlay — Telemetria real no seu vídeo de ação</title>
+  <meta name="description" content="Aplicativo desktop gratuito e open source que transforma os dados GPS do Strava, de arquivos GPX ou da telemetria da GoPro em overlays sincronizados no seu vídeo.">
+  <meta property="og:title" content="Strava Overlay">
+  <meta property="og:description" content="Seu vídeo mostra a paisagem. Agora ele mostra o esforço.">
+  <meta property="og:image" content="assets/overlays/arcs.png">
+  <meta name="theme-color" content="#121212">
+  <link rel="icon" type="image/png" href="assets/favicon.png">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Barlow+Condensed:ital,wght@0,600;0,800;1,800&family=Inter:wght@400;500;600&family=JetBrains+Mono:wght@500;700&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+  <a class="skip" href="#main" data-i18n="skip">Pular para o conteúdo</a>
+
+  <header class="nav" id="top">
+    <div class="wrap nav__inner">
+      <a class="brand" href="#top">
+        <img src="assets/icon.png" alt="" width="32" height="32">
+        <span>Strava<b>Overlay</b></span>
+      </a>
+      <nav class="nav__links" aria-label="Seções">
+        <a href="#historia" data-i18n="nav.story">A história</a>
+        <a href="#fontes" data-i18n="nav.sources">Como funciona</a>
+        <a href="#overlays" data-i18n="nav.overlays">Overlays</a>
+        <a href="#publico" data-i18n="nav.audience">Para quem</a>
+      </nav>
+      <div class="nav__actions">
+        <div class="lang" role="group" aria-label="Idioma / Language">
+          <button type="button" data-lang="pt" aria-pressed="true">PT</button>
+          <button type="button" data-lang="en" aria-pressed="false">EN</button>
+        </div>
+        <a class="btn btn--sm btn--orange" href="#download" data-i18n="nav.download">Baixar</a>
+      </div>
+    </div>
+  </header>
+
+  <main id="main">
+    <!-- HERO -->
+    <section class="hero">
+      <div class="grid-bg" aria-hidden="true"></div>
+      <div class="wrap hero__inner">
+        <div class="hero__copy">
+          <p class="eyebrow"><span class="dot"></span><span data-i18n="hero.eyebrow">Open source · Desktop · v1.0.1</span></p>
+          <h1 data-i18n="hero.title">Seu vídeo mostra a paisagem. <em>Agora ele mostra o esforço.</em></h1>
+          <p class="lead" data-i18n="hero.lead">O Strava Overlay pega os dados GPS da sua atividade — do Strava, de um arquivo GPX ou da própria GoPro — e desenha velocidade, altitude, inclinação e trajeto em cima do vídeo, quadro a quadro, sincronizados com o que a câmera gravou.</p>
+          <div class="hero__cta">
+            <a class="btn btn--orange" href="#download" data-i18n="hero.cta">Baixar grátis</a>
+            <a class="btn btn--ghost" href="https://github.com/PauloTorresApps/strava-overlay" target="_blank" rel="noopener" data-i18n="hero.github">Ver no GitHub</a>
+          </div>
+          <ul class="hero__specs">
+            <li><b data-i18n="hero.s1v">7</b><span data-i18n="hero.s1">estilos de overlay</span></li>
+            <li><b data-i18n="hero.s2v">3</b><span data-i18n="hero.s2">fontes de dados</span></li>
+            <li><b>3</b><span data-i18n="hero.s3">sistemas: Linux, Windows e macOS</span></li>
+          </ul>
+        </div>
+
+        <figure class="hero__screen">
+          <div class="screen">
+            <div class="screen__bar">
+              <span class="rec"><i></i>REC</span>
+              <span class="mono" id="clock">00:02:24</span>
+              <span class="mono screen__gps">GPS ●</span>
+            </div>
+            <img src="assets/overlays/arcs.png" alt="Vídeo de uma estrada com overlay no estilo Arcs: velocidade, inclinação, elevação e distância" width="1280" height="720">
+            <div class="screen__corner screen__corner--tl"></div>
+            <div class="screen__corner screen__corner--br"></div>
+          </div>
+          <figcaption class="mono" data-i18n="hero.caption">Estilo “Arcs” renderizado pelo app</figcaption>
+          <div class="chip chip--speed" aria-hidden="true">
+            <span class="chip__label" data-i18n="metric.speed">Velocidade</span>
+            <span class="chip__value"><b id="liveSpeed">33.0</b> km/h</span>
+          </div>
+          <div class="chip chip--alt" aria-hidden="true">
+            <span class="chip__label" data-i18n="metric.altitude">Altitude</span>
+            <span class="chip__value"><b id="liveAlt">230</b> m</span>
+          </div>
+        </figure>
+      </div>
+      <div class="ticker" aria-hidden="true">
+        <div class="ticker__track">
+          <span>VEL 33,2 KM/H</span><span>ALT 1845 M</span><span>RAMPA 8%</span><span>FORÇA G 0,18</span><span>RUMO NE 67°</span><span>DIST 42,7 KM</span>
+          <span>VEL 33,2 KM/H</span><span>ALT 1845 M</span><span>RAMPA 8%</span><span>FORÇA G 0,18</span><span>RUMO NE 67°</span><span>DIST 42,7 KM</span>
+        </div>
+      </div>
+    </section>
+
+    <!-- STORY / PAIN -->
+    <section class="section story" id="historia">
+      <div class="wrap story__grid">
+        <div>
+          <p class="kicker" data-i18n="story.kicker">01 — A dor</p>
+          <h2 data-i18n="story.title">A GoPro grava tudo. Menos o que importa.</h2>
+        </div>
+        <div class="story__body">
+          <p data-i18n="story.p1">Você volta do pedal com horas de vídeo lindo: a descida, a curva fechada, o pôr do sol no alto da serra. Mas, quando assiste, falta alguma coisa. O vídeo não diz a que velocidade você estava, quanto subiu nem em que ponto do trajeto aquilo aconteceu.</p>
+          <p data-i18n="story.p2">Os números estão lá — no Strava, no GPS, às vezes gravados dentro do próprio arquivo da câmera. Só que ficam separados do vídeo. Juntar os dois na mão, num editor, leva horas, e as ferramentas que faziam isso foram descontinuadas, são pagas ou não rodam no Linux.</p>
+
+          <!-- TODO(autor): substituir este bloco pelo relato pessoal de Paulo Roberto Torres -->
+          <blockquote class="quote">
+            <p data-i18n="story.quote">“Eu tinha o vídeo e tinha os dados. Faltava uma ferramenta que juntasse os dois. Então eu escrevi uma.”</p>
+            <footer>— Paulo Roberto Torres, <span data-i18n="story.role">criador do Strava Overlay</span></footer>
+          </blockquote>
+        </div>
+      </div>
+
+      <div class="wrap compare">
+        <div class="compare__col compare__col--before">
+          <p class="kicker" data-i18n="story.before">Antes</p>
+          <ul>
+            <li data-i18n="story.b1">Vídeo bonito, mas sem contexto</li>
+            <li data-i18n="story.b2">Dados presos no app de treino</li>
+            <li data-i18n="story.b3">Horas alinhando gráficos no editor</li>
+          </ul>
+        </div>
+        <div class="compare__arrow" aria-hidden="true">→</div>
+        <div class="compare__col compare__col--after">
+          <p class="kicker" data-i18n="story.after">Com o Strava Overlay</p>
+          <ul>
+            <li data-i18n="story.a1">Velocidade, altitude e trajeto na tela</li>
+            <li data-i18n="story.a2">Sincronização com um clique no mapa</li>
+            <li data-i18n="story.a3">Vídeo final pronto para publicar</li>
+          </ul>
+        </div>
+      </div>
+    </section>
+
+    <!-- DATA SOURCES / PIPELINE -->
+    <section class="section sources" id="fontes">
+      <div class="wrap">
+        <p class="kicker" data-i18n="src.kicker">02 — Como ele se alimenta</p>
+        <h2 data-i18n="src.title">Três fontes de dados. Um vídeo sincronizado.</h2>
+        <p class="section__lead" data-i18n="src.lead">O app aceita a telemetria de onde ela estiver. Depois disso, o caminho é o mesmo: sincronizar, desenhar e codificar.</p>
+
+        <div class="sources__grid">
+          <article class="card source">
+            <span class="source__tag mono">API</span>
+            <h3>Strava</h3>
+            <p data-i18n="src.strava">Conecte sua conta e escolha uma atividade da lista. O app baixa os fluxos de tempo, posição, velocidade e altitude em alta resolução.</p>
+          </article>
+          <article class="card source">
+            <span class="source__tag mono">.GPX</span>
+            <h3 data-i18n="src.gpxT">Arquivo GPX</h3>
+            <p data-i18n="src.gpx">Exportou do Garmin, do Wahoo ou de outro app? Importe o arquivo GPX e use o trajeto sem depender do Strava.</p>
+          </article>
+          <article class="card source">
+            <span class="source__tag mono">GPMF</span>
+            <h3 data-i18n="src.goproT">Telemetria GoPro</h3>
+            <p data-i18n="src.gopro">Câmeras GoPro com GPS gravam a telemetria dentro do próprio MP4. O app detecta e extrai esses dados do vídeo: você não precisa de nenhum outro arquivo.</p>
+          </article>
+        </div>
+
+        <ol class="pipeline">
+          <li>
+            <span class="pipeline__n mono">01</span>
+            <h4 data-i18n="pipe.1t">Conecte</h4>
+            <p data-i18n="pipe.1">Escolha a atividade no Strava, importe um GPX ou abra o vídeo da GoPro.</p>
+          </li>
+          <li>
+            <span class="pipeline__n mono">02</span>
+            <h4 data-i18n="pipe.2t">Sincronize</h4>
+            <p data-i18n="pipe.2">O app usa a hora de criação do vídeo. Para um ajuste fino, clique no mapa no ponto onde a gravação começou.</p>
+          </li>
+          <li>
+            <span class="pipeline__n mono">03</span>
+            <h4 data-i18n="pipe.3t">Personalize</h4>
+            <p data-i18n="pipe.3">Escolha o estilo, a posição, a escala e a opacidade, e confira o resultado na pré-visualização.</p>
+          </li>
+          <li>
+            <span class="pipeline__n mono">04</span>
+            <h4 data-i18n="pipe.4t">Renderize</h4>
+            <p data-i18n="pipe.4">O FFmpeg codifica o vídeo final usando a placa de vídeo quando houver: NVIDIA, Intel, AMD ou Apple.</p>
+          </li>
+        </ol>
+      </div>
+    </section>
+
+    <!-- OVERLAYS GALLERY -->
+    <section class="section overlays" id="overlays">
+      <div class="wrap">
+        <p class="kicker" data-i18n="ov.kicker">03 — Overlays</p>
+        <h2 data-i18n="ov.title">Sete estilos. Um para cada tipo de vídeo.</h2>
+        <p class="section__lead" data-i18n="ov.lead">Do velocímetro clássico ao painel de realidade aumentada que ocupa a tela inteira. Todos com textos em português ou inglês.</p>
+
+        <div class="gallery">
+          <div class="gallery__tabs" role="tablist" aria-label="Estilos de overlay">
+            <button role="tab" aria-selected="true" data-style="arcs">Arcs</button>
+            <button role="tab" aria-selected="false" data-style="fullface">Fullface</button>
+            <button role="tab" aria-selected="false" data-style="holographic" data-i18n="ov.n.holo">Holográfico</button>
+            <button role="tab" aria-selected="false" data-style="hud">HUD</button>
+            <button role="tab" aria-selected="false" data-style="cyberpunk">Cyberpunk</button>
+            <button role="tab" aria-selected="false" data-style="minimalist" data-i18n="ov.n.min">Minimalista</button>
+            <button role="tab" aria-selected="false" data-style="default" data-i18n="ov.n.def">Clássico</button>
+          </div>
+
+          <div class="gallery__stage" role="tabpanel">
+            <div class="gallery__frame">
+              <img id="ovImg" src="assets/overlays/arcs.png" alt="" width="1280" height="720">
+            </div>
+            <div class="gallery__info">
+              <span class="mono gallery__count" id="ovCount">01 / 07</span>
+              <h3 id="ovName">Arcs</h3>
+              <p id="ovDesc"></p>
+              <ul class="tags" id="ovTags"></ul>
+            </div>
+          </div>
+        </div>
+
+        <div class="extras">
+          <div class="card extra">
+            <h4 data-i18n="ov.mapT">Mapa do trajeto</h4>
+            <p data-i18n="ov.map">Um minimapa com o percurso completo e sua posição atual, que pode ser combinado com qualquer estilo.</p>
+          </div>
+          <div class="card extra">
+            <h4 data-i18n="ov.posT">Posição, escala e opacidade</h4>
+            <p data-i18n="ov.pos">Coloque o overlay em qualquer canto, aumente ou diminua o tamanho e ajuste a transparência para não esconder a paisagem.</p>
+          </div>
+          <div class="card extra">
+            <h4 data-i18n="ov.editT">Recorte e rotação</h4>
+            <p data-i18n="ov.edit">Corte o início e o fim do vídeo e corrija a orientação dentro do app, antes de renderizar.</p>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- AUDIENCE -->
+    <section class="section audience" id="publico">
+      <div class="wrap">
+        <p class="kicker" data-i18n="aud.kicker">04 — Para quem</p>
+        <h2 data-i18n="aud.title">Feito para quem grava em movimento.</h2>
+        <div class="audience__grid">
+          <article class="card persona">
+            <span class="persona__icon" aria-hidden="true">
+              <svg viewBox="0 0 48 48"><circle cx="11" cy="32" r="8"/><circle cx="37" cy="32" r="8"/><path d="M11 32l8-14h12l6 14M19 18l6 14h-14M27 12h6"/></svg>
+            </span>
+            <h3 data-i18n="aud.1t">Ciclistas de estrada e MTB</h3>
+            <p data-i18n="aud.1">Mostre a velocidade na descida, a rampa da subida e onde cada trecho aconteceu.</p>
+          </article>
+          <article class="card persona">
+            <span class="persona__icon" aria-hidden="true">
+              <svg viewBox="0 0 48 48"><circle cx="10" cy="33" r="7"/><circle cx="38" cy="33" r="7"/><path d="M10 33h14l6-12h8M30 21l8 12M18 21h8l-2 6"/></svg>
+            </span>
+            <h3 data-i18n="aud.2t">Motociclistas e outros esportes</h3>
+            <p data-i18n="aud.2">Moto, carro, trilha, esqui: se tem GPS e câmera, dá para colocar a telemetria no vídeo.</p>
+          </article>
+          <article class="card persona">
+            <span class="persona__icon" aria-hidden="true">
+              <svg viewBox="0 0 48 48"><rect x="6" y="12" width="28" height="24" rx="3"/><path d="M34 20l9-5v18l-9-5z"/><circle cx="14" cy="20" r="2"/></svg>
+            </span>
+            <h3 data-i18n="aud.3t">Criadores de conteúdo</h3>
+            <p data-i18n="aud.3">Vídeos com dados prendem mais a atenção no YouTube e no Instagram. Gere o overlay sem precisar de um editor profissional.</p>
+          </article>
+        </div>
+      </div>
+    </section>
+
+    <!-- FEATURES -->
+    <section class="section features">
+      <div class="wrap features__grid">
+        <div class="feature">
+          <span class="feature__k mono">AGPL-3.0</span>
+          <h4 data-i18n="ft.1t">Grátis e open source</h4>
+          <p data-i18n="ft.1">O código é aberto. Você pode auditar, melhorar e contribuir.</p>
+        </div>
+        <div class="feature">
+          <span class="feature__k mono">LOCAL</span>
+          <h4 data-i18n="ft.2t">Seus dados ficam com você</h4>
+          <p data-i18n="ft.2">O vídeo é processado no seu computador. As credenciais ficam salvas só na sua máquina.</p>
+        </div>
+        <div class="feature">
+          <span class="feature__k mono">GPU</span>
+          <h4 data-i18n="ft.3t">Aceleração de hardware</h4>
+          <p data-i18n="ft.3">NVENC, Quick Sync, AMF e VideoToolbox, com perfis rápido, equilibrado e de qualidade.</p>
+        </div>
+        <div class="feature">
+          <span class="feature__k mono">PT · EN</span>
+          <h4 data-i18n="ft.4t">Bilíngue</h4>
+          <p data-i18n="ft.4">A interface e os textos do overlay estão em português e em inglês.</p>
+        </div>
+      </div>
+    </section>
+
+    <!-- DOWNLOAD -->
+    <section class="section download" id="download">
+      <div class="wrap">
+        <p class="kicker" data-i18n="dl.kicker">05 — Download</p>
+        <h2 data-i18n="dl.title">Pronto para colocar dados no seu próximo vídeo?</h2>
+        <p class="section__lead" data-i18n="dl.lead">Baixe a versão mais recente para o seu sistema.</p>
+
+        <div class="download__grid">
+          <a class="platform" href="https://github.com/PauloTorresApps/strava-overlay/releases/latest" target="_blank" rel="noopener">
+            <span class="platform__os">Linux</span>
+            <span class="platform__fmt mono">.deb · Debian / Ubuntu</span>
+          </a>
+          <a class="platform" href="https://github.com/PauloTorresApps/strava-overlay/releases/latest" target="_blank" rel="noopener">
+            <span class="platform__os">Linux</span>
+            <span class="platform__fmt mono">.rpm · AppImage</span>
+          </a>
+          <a class="platform" href="https://github.com/PauloTorresApps/strava-overlay/releases/latest" target="_blank" rel="noopener">
+            <span class="platform__os">Windows</span>
+            <span class="platform__fmt mono">x64</span>
+          </a>
+          <a class="platform" href="https://github.com/PauloTorresApps/strava-overlay/releases/latest" target="_blank" rel="noopener">
+            <span class="platform__os">macOS</span>
+            <span class="platform__fmt mono">Intel · Apple Silicon</span>
+          </a>
+        </div>
+
+        <div class="requirements">
+          <h4 data-i18n="dl.reqT">Antes de começar</h4>
+          <ul>
+            <li data-i18n="dl.r1"><b>FFmpeg</b> instalado no sistema (os pacotes .deb e .rpm já cuidam disso).</li>
+            <li data-i18n="dl.r2">Para usar o Strava: um <b>Client ID e Client Secret</b>, criados gratuitamente em strava.com/settings/api. O app pede essas informações na primeira vez que é aberto.</li>
+          </ul>
+          <a class="link" href="https://github.com/PauloTorresApps/strava-overlay/blob/main/HowToInstall.md" target="_blank" rel="noopener" data-i18n="dl.guide">Guia completo de instalação →</a>
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <footer class="footer">
+    <div class="wrap footer__inner">
+      <div class="brand brand--footer">
+        <img src="assets/icon.png" alt="" width="28" height="28">
+        <span>Strava<b>Overlay</b></span>
+      </div>
+      <p data-i18n="foot.by">Criado por Paulo Roberto Torres · Licença AGPL-3.0</p>
+      <p class="footer__note" data-i18n="foot.note">Projeto independente, sem afiliação com a Strava, Inc. ou com a GoPro, Inc.</p>
+      <a href="https://github.com/PauloTorresApps/strava-overlay" target="_blank" rel="noopener">GitHub</a>
+    </div>
+  </footer>
+
+  <script src="main.js"></script>
+</body>
+</html>
