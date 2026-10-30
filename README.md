@@ -1,4 +1,4 @@
-# Strava Overlay
+# HUD Telemetry
 
 🌐 **Site:** https://paulotorresapps.github.io/strava-overlay-site/
 
@@ -54,7 +54,7 @@ no Windows, adicione-o ao PATH) e depois abra o instalador baixado.
 
 1. Crie uma aplicação gratuita em https://www.strava.com/settings/api e copie o
    **Client ID** e o **Client Secret**.
-2. Abra o Strava Overlay e informe esses dados na tela de configuração. Eles ficam
+2. Abra o HUD Telemetry e informe esses dados na tela de configuração. Eles ficam
    salvos apenas no seu computador, em `~/.strava-overlay/config.json`.
 3. Clique em **Conectar com Strava**, escolha a atividade e o vídeo, sincronize
    clicando no mapa e clique em **Processar com Overlay**.
@@ -102,7 +102,7 @@ Windows: add it to PATH), then run the downloaded installer.
 
 1. Create a free app at https://www.strava.com/settings/api and copy the
    **Client ID** and **Client Secret**.
-2. Open Strava Overlay and enter them on the setup screen. They are stored only
+2. Open HUD Telemetry and enter them on the setup screen. They are stored only
    on your computer, in `~/.strava-overlay/config.json`.
 3. Click **Connect with Strava**, pick the activity and the video, sync by
    clicking the map and click **Process with Overlay**.
