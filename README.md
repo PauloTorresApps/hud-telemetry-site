@@ -23,7 +23,7 @@ Baixe o instalador do seu sistema na página de
 incluindo o FFmpeg, sejam instaladas automaticamente:
 
 ```bash
-sudo apt install ./strava-overlay_<versao>_amd64.deb
+sudo apt install ./hud-telemetry_<versao>_amd64.deb
 ```
 
 > Evite `sudo dpkg -i`: ele não baixa as dependências. Se já usou e o app não
@@ -32,35 +32,58 @@ sudo apt install ./strava-overlay_<versao>_amd64.deb
 **.rpm (Fedora / RHEL e derivados)**
 
 ```bash
-sudo dnf install ./strava-overlay-<versao>.x86_64.rpm
+sudo dnf install ./hud-telemetry-<versao>-1.x86_64.rpm
 ```
 
 **AppImage (maioria das distribuições)**: não instala nada no sistema:
 
 ```bash
-chmod +x Strava_Overlay-x86_64.AppImage
-./Strava_Overlay-x86_64.AppImage
+chmod +x HUD_Telemetry-<versao>-x86_64.AppImage
+./HUD_Telemetry-<versao>-x86_64.AppImage
 ```
 
-> Na primeira execução, o AppImage baixa o FFmpeg automaticamente para
-> `~/.strava-overlay/bin/`.
+> Se o FFmpeg não estiver instalado, o AppImage o baixa automaticamente na
+> primeira execução, para `~/.hud-telemetry/bin/`.
+
+**Snap**: fica fora da Snap Store e roda em modo de desenvolvimento:
+
+```bash
+sudo snap install --dangerous --devmode ./hud-telemetry_<versao>_amd64.snap
+```
 
 ### Windows e macOS
 
 Instale o [FFmpeg](https://ffmpeg.org/download.html) (no macOS: `brew install ffmpeg`;
-no Windows, adicione-o ao PATH) e depois abra o instalador baixado.
+no Windows, adicione-o ao PATH).
+
+- **Windows:** execute `hud-telemetry-amd64-installer.exe`. Se o SmartScreen
+  avisar que o app não é reconhecido, clique em **Mais informações → Executar
+  assim mesmo**.
+- **macOS** (Intel e Apple Silicon): descompacte
+  `hud-telemetry-<versao>-macos-universal.zip` e arraste `hud-telemetry.app`
+  para Aplicativos. O app não é assinado pela Apple; se o macOS bloquear a
+  abertura, rode uma vez:
+
+  ```bash
+  xattr -dr com.apple.quarantine /Applications/hud-telemetry.app
+  ```
 
 ### Primeiro uso
 
 1. Crie uma aplicação gratuita em https://www.strava.com/settings/api e copie o
    **Client ID** e o **Client Secret**.
 2. Abra o HUD Telemetry e informe esses dados na tela de configuração. Eles ficam
-   salvos apenas no seu computador, em `~/.strava-overlay/config.json`.
+   salvos apenas no seu computador, em `~/.hud-telemetry/config.json`.
 3. Clique em **Conectar com Strava**, escolha a atividade e o vídeo, sincronize
    clicando no mapa e clique em **Processar com Overlay**.
 
 Você também pode importar um arquivo **GPX** ou abrir um vídeo da **GoPro** com
 GPS: o app lê a telemetria gravada no próprio arquivo.
+
+> **Usava o Strava Overlay?** O HUD Telemetry é o mesmo app com nome novo. Na
+> primeira execução, ele move suas configurações e o login de
+> `~/.strava-overlay` para `~/.hud-telemetry`. No Linux, o pacote novo substitui
+> o antigo `strava-overlay`.
 
 ### Problemas comuns
 
@@ -84,31 +107,49 @@ Get the installer for your system from
 
 ```bash
 # Debian / Ubuntu (installs FFmpeg and other dependencies)
-sudo apt install ./strava-overlay_<version>_amd64.deb
+sudo apt install ./hud-telemetry_<version>_amd64.deb
 
 # Fedora / RHEL
-sudo dnf install ./strava-overlay-<version>.x86_64.rpm
+sudo dnf install ./hud-telemetry-<version>-1.x86_64.rpm
 
-# AppImage (any distro; downloads FFmpeg on first run)
-chmod +x Strava_Overlay-x86_64.AppImage && ./Strava_Overlay-x86_64.AppImage
+# AppImage (any distro; downloads FFmpeg on first run if missing)
+chmod +x HUD_Telemetry-<version>-x86_64.AppImage && ./HUD_Telemetry-<version>-x86_64.AppImage
+
+# Snap (outside the Snap Store, devmode)
+sudo snap install --dangerous --devmode ./hud-telemetry_<version>_amd64.snap
 ```
 
 ### Windows and macOS
 
 Install [FFmpeg](https://ffmpeg.org/download.html) (macOS: `brew install ffmpeg`;
-Windows: add it to PATH), then run the downloaded installer.
+Windows: add it to PATH).
+
+- **Windows:** run `hud-telemetry-amd64-installer.exe`. If SmartScreen says the
+  app isn't recognized, click **More info → Run anyway**.
+- **macOS** (Intel and Apple Silicon): unzip
+  `hud-telemetry-<version>-macos-universal.zip` and drag `hud-telemetry.app`
+  to Applications. The app isn't signed by Apple; if macOS blocks it, run once:
+
+  ```bash
+  xattr -dr com.apple.quarantine /Applications/hud-telemetry.app
+  ```
 
 ### First run
 
 1. Create a free app at https://www.strava.com/settings/api and copy the
    **Client ID** and **Client Secret**.
 2. Open HUD Telemetry and enter them on the setup screen. They are stored only
-   on your computer, in `~/.strava-overlay/config.json`.
+   on your computer, in `~/.hud-telemetry/config.json`.
 3. Click **Connect with Strava**, pick the activity and the video, sync by
    clicking the map and click **Process with Overlay**.
 
 You can also import a **GPX** file or open a **GoPro** video with GPS: the app
 reads the telemetry recorded inside the file.
+
+> **Used Strava Overlay?** HUD Telemetry is the same app under a new name. On
+> first run it moves your settings and login from `~/.strava-overlay` to
+> `~/.hud-telemetry`. On Linux, the new package replaces the old
+> `strava-overlay` one.
 
 ---
 
